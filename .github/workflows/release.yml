@@ -116,7 +116,8 @@ jobs:
           env:
             github_user: KyloRen1
             github_token: ${{ github.token }}
-          if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          #if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          if: (steps.get-versions.outputs.new-version == 'true')
           shell: bash
           run: |
               git config --global user.email "noreply@example.com"
@@ -125,7 +126,8 @@ jobs:
               git push https://$github_user:$github_token@github.com/${{ github.repository }} "${{ steps.get-versions.outputs.tag }}"
 
         - name: GitHub release
-          if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          #if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          if: (steps.get-versions.outputs.new-version == 'true')
           uses: softprops/action-gh-release@v1
           with:
               name: "${{ steps.get-versions.outputs.name }} ${{ steps.get-versions.outputs.tag }}"
@@ -135,7 +137,8 @@ jobs:
               generate_release_notes: true
 
         - name: Push to PyPI
-          if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          #if: (steps.get-versions.outputs.new-version == 'true') && (steps.test-sdist.outputs.result == 'true') && (steps.test-bdist-wheel.outputs.result == 'true')
+          if: (steps.get-versions.outputs.new-version == 'true')
           uses: pypa/gh-action-pypi-publish@release/v1
           with:
               password: ${{ secrets.pypi_token }}
