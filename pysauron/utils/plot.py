@@ -1,4 +1,12 @@
-import matplotlib.pyplot as plt
+import subprocess
+import sys
+
+try:
+    import matplotlib.pyplot as plt
+except:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'matplotlib'])
+    import matplotlib.pyplot as plt
+
 
 
 def plot_anomaly_score(video_name:str, gt_labels:list, pred_labels:list, log_dir:str) -> None: 
