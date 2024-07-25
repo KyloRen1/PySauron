@@ -1,6 +1,6 @@
 [project]
 name = "pysauron"
-version = "0.0.1"
+version = "0.0.2"
 description = "A collection of datasets for video anomaly detection"
 readme = "README.md"
 requires-python =">=3.8.0"
