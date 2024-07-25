@@ -58,7 +58,7 @@ jobs:
               "
 
         - name: Test sdist
-          id: test-sdist
+          id: test-sdistf
           if: steps.get-versions.outputs.new-version == 'true'
           shell: bash
           run: |
@@ -89,7 +89,7 @@ jobs:
               cd $(mktemp -d)
               set +e
               bash -c "
-                python -m pip install pytest
+                python -m pip install pytest torch==2.0.1
                 cp -r ${{ github.workspace }}/test ./test
                 pytest  --disable-warnings
               "
