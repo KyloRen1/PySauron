@@ -66,7 +66,7 @@ jobs:
               cd $(mktemp -d)
               set +e
               bash -c "
-                python -m pip install pytest
+                python -m pip install -r ./test/requirements.txt
                 cp -r ${{ github.workspace }}/test ./test
                 pytest  --disable-warnings
               "
