@@ -12,7 +12,7 @@ python_requires = ">=3.8.0"
 url = "https://github.com/KyloRen1/" + name
 
 
-with open(_here / name.replace('-', '_') / "__init__.py") as f:
+with open(_here / name.lower().replace('-', '_') / "__init__.py") as f:
     meta_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", f.read(), re.M)
     if meta_match:
         version = meta_match.group(1)
@@ -40,10 +40,9 @@ setuptools.setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Science/Research",
-        "Natural Language :: Ukrainian",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
     packages=setuptools.find_packages(
         exclude=["test", "test*", "assets"]
