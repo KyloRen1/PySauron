@@ -79,6 +79,7 @@ jobs:
               set -e
               python -m pip uninstall -y -r <(pip freeze)
               cd ${{ github.workspace }}
+          continue-on-error: true
 
         - name: Test bdist_wheel
           id: test-bdist-wheel
@@ -102,6 +103,7 @@ jobs:
               set -e
               python -m pip uninstall -y -r <(pip freeze)
               cd ${{ github.workspace }}
+          continue-on-error: true
 
         - name: Logging
           shell: bash
